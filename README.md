@@ -10,5 +10,5 @@
 	- Web : Spring Web
 	- Template Engines : Thymeleaf
 	- SQL : MyBatis Framework, MariaDB Driver
-	- I/O : ValidationD
+	- I/O : Validation
 
