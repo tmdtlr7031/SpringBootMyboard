@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 기능 넣기 프로젝트 v1.0</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/boardresources/image/favicon.ico}" />
+
+    <!-- 부트스트랩4 필수 : 제이쿼리, popper.js -->
+    <script type="text/javascript" th:src="@{/boardresources/js/jquery-3.5.0.min.js}"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
+    <!-- 부트스트랩 -->
+    <script type="text/javascript" th:src="@{/boardresources/bootstrap_4.4.1/js/bootstrap.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/boardresources/bootstrap_4.4.1/css/bootstrap.css}" media="all">
+
+    <script th:inline="javascript">
+        function actionLogin() {
+            if ($('#usrId').val() == "") {
+                alert("아이디를 입력하세요.");
+                $('#usrId').focus();
+            } else if ($('#usrPwd').val() == "") {
+                alert("비밀번호를 입력하세요.");
+                $('#usrPwd').focus();
+            }
+            document.loginForm.submit();
+        }
+    </script>
+
+</head>
+<body>
+    <form th:name="loginForm" method="post" th:action th:object="${users}">
+        <div>
+            <div id="loginwrap">
+                <div class="lgninner">
+                    <img th:src="@{/boardresources/image/LoginCat.png}" alt="로그인하세요" />
+                    <h1>로그인 폼</h1>
+                    <ul>
+                        <li>
+                            <label for="usrId">아이디</label>
+                            <input type="text" id="usrId" th:field="*{usrId}" title="아이디" tabindex=1 placeholder="아이디">
+                        </li>
+                        <li>
+                            <label for="usrPwd">비밀번호</label>
+                            <input type="password" id="usrPwd" th:field="*{usrPwd}" title="비밀번호" maxlength="16" tabindex="2" onKeyDown="javascript:if (event.keyCode == 13) { actionLogin(); }" placeholder="비밀번호">
+                        </li>
+                        <li class="btn btn-block">
+                            <a href="javascript:;" onclick="actionLogin(); return false;">로그인</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <style type="text/css">
+        * {padding:0;margin:0;text-decoration: none;font-family: "맑은 고딕","돋움",Arial}
+        input{font-family:inherit;font-size:inherit;color:#000;display:inline-block;zoom:1;*display:inline;_display:inline;}
+        input[type="checkbox"],input[type="radio"]{margin: 0 3px 0 0 !important;width: 14px;height: 14px;vertical-align: middle;}
+        ul,ol,li,dl,dt,dd{list-style:none;vertical-align: top;}
+
+        #loginwrap{position:relative; margin-top:10%}
+        .lgninner{width: 400px;margin: 0 auto;padding: 40px 30px 25px; border: 5px solid #dedede;position: relative;}
+        .lgninner h1{text-align: center;margin-bottom: 14px;}
+        .lgninner h1 img{margin-right: 10px}
+        .lgninner h1 span {vertical-align: top;font-size: 25px;}
+        .lgninner ul{margin-top: 3px;padding: 0 0 0 0}
+        .lgninner ul li{margin-bottom: 10px;}
+        .lgninner ul li input {width: 98%;height: 40px; line-height: 40px; padding: 0 0 0 5px; }
+        .lgninner ul li label {position:absolute;left:-10000px;top:auto;height:1px;overflow:hidden}
+        .lgninner ul .btn{margin-top:15px;margin-bottom: 0}
+        .lgninner ul .btn a{padding: 11px 20px 15px 20px;background-color: #555;display: block;border-radius: 5px;text-align: center;color: #fff;font-size: 18px;font-weight: 600;}
+    </style>
+
+</body>
+</html>
