@@ -41,7 +41,7 @@
         function doRefresh() {
             $.ajax({
                 type : "POST",
-                url : "/keepSession.do",
+                url : /*[[@{/keepSession.do}]]*/ "/keepSession.do",
                 success : function(data) {
                 },
                 error : function() {
@@ -51,10 +51,10 @@
     </script>
 
     <div class="topbar" th:fragment="menuTopBar_contents">
-        <span class="txtle flLeft"><a href="/myPage.do">관리자님 환영합니다.</a></span>
+        <span class="txtle flLeft"><a th:href="@{/myPage.do}">관리자님 환영합니다.</a></span>
         <span class="intimed flLeft">마지막 접속시간&nbsp;  2020-04-23 10:03:03&nbsp;<em id="logTimer"></em></span>
-        <span class="exten flLeft"><a href="javascript:;" onclick="loginExtension(); return false;">로그인연장</a></span>
-        <span class="last"><a href="/actionLogout.do">로그아웃</a></span>
+        <span class="exten flLeft"><a href="javascript:;" th:onclick="loginExtension()">로그인연장</a></span>
+        <span class="last"><a th:href="@{/actionLogout.do}">로그아웃</a></span>
         <!-- 190419 (s) -->
         <span class="last" style="background-color: #252525;"><a>임시용</a></span>
         <!-- //190419 (e) -->

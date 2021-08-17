@@ -46,7 +46,7 @@
                             <input type="password" id="usrPwd" th:field="*{usrPwd}" title="비밀번호" maxlength="16" tabindex="2" onKeyDown="javascript:if (event.keyCode == 13) { actionLogin(); }" placeholder="비밀번호">
                         </li>
                         <li class="btn btn-block">
-                            <a href="javascript:;" onclick="actionLogin(); return false;">로그인</a>
+                            <a href="javascript:;" th:onclick="actionLogin()">로그인</a>
                         </li>
                     </ul>
                 </div>
