@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <script type="text/javascript" th:inline="javascript" th:fragment="menuTopBar_script">
+        // 로그인 된 유저 정보 있는지 확인
+        isLoginUser = /*[[${LoginVO}]]*/ null;
+
+        $(document).ready(function(){
+            if (isLoginUser != null) {
+                doMainTimer();
+            }
+        });
+
+        function doMainTimer(){
+            //메인바 타이머
+            // 10000 10초
+            // 600000 1분
+            // 1800000 30분
+            var lapSeconds = new Date().getTime() + 1800000;
+            $('#logTimer').countdown(lapSeconds, {elapse: false})
+                .on('update.countdown', function(event) {
+                    var $this = $(this);
+                    $this.html(event.strftime('<span>%M:%S</span>'));
+                })
+                .on('finish.countdown', function(event){
+                    logout();
+                });
+        }
+
+        // 로그인 연장
+        function loginExtension() {
+            doRefresh();
+            doMainTimer();
+        }
+
+        // 로그아웃
+        function logout() {
+            location.href = /*[[@{/actionLogout.do}]]*/ '/actionLogout.do';
+        }
+
+        function doRefresh() {
+            $.ajax({
+                type : "POST",
+                url : "/keepSession.do",
+                success : function(data) {
+                },
+                error : function() {
+                }
+            });
+        }
+    </script>
+
+    <div class="topbar" th:fragment="menuTopBar_contents">
+        <span class="txtle flLeft"><a href="/myPage.do">관리자님 환영합니다.</a></span>
+        <span class="intimed flLeft">마지막 접속시간&nbsp;  2020-04-23 10:03:03&nbsp;<em id="logTimer"></em></span>
+        <span class="exten flLeft"><a href="javascript:;" onclick="loginExtension(); return false;">로그인연장</a></span>
+        <span class="last"><a href="/actionLogout.do">로그아웃</a></span>
+        <!-- 190419 (s) -->
+        <span class="last" style="background-color: #252525;"><a>임시용</a></span>
+        <!-- //190419 (e) -->
+    </div>
+</html>
