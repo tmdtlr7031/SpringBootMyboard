@@ -13,3 +13,5 @@
 	- I/O : Validation
 
 ## master / dev 브랜치 나눠서 작업
+- master : 배포(tag 생성 예정)
+- dev : 개바 (git flow 간략히 모방하여 hotfix, QA 등등 다 dev브랜치에서 진행)
