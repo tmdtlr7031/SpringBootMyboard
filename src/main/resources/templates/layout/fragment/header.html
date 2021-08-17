@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:fragment="common_header">
+    <meta charset="UTF-8">
+
+    <title>게시판 기능 넣기 프로젝트 v1.0 Boot</title>
+
+    <!-- 공통 -->
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/boardresources/image/favicon.ico}" />
+
+    <!-- 부트스트랩4 필수 : 제이쿼리, popper.js -->
+    <script type="text/javascript" th:src="@{/boardresources/js/jquery-3.5.0.min.js}"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
+    <script type="text/javascript" th:src="@{/boardresources/js/jquery.countdown.js}"></script>
+
+    <!-- 부트스트랩 -->
+    <script type="text/javascript" th:src="@{/boardresources/bootstrap_4.4.1/js/bootstrap.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/boardresources/bootstrap_4.4.1/css/bootstrap.css}" media="all">
+
+    <style>
+        #header {position: absolute;z-index: 1;float: left;width: 230px;min-height: 100%;overflow-x:hidden;background-color: #fff;/* border-right: 1px solid #262626; */box-shadow: 0 0 5px rgba(0,0,0,0.2);}
+         .topbar {background-color: #8C8C8C;text-align: right;padding: 0px 25px 0 241px;height: 60px;line-height: 35px;font-size: 0;min-width: 1060px;/* border-bottom: 1px solid #1b3958; */}
+        .topbar span{cursor: pointer;color: #fff;font-weight: normal;display:inline-block;zoom:1;*display:inline;_display:inline;padding: 0 0 0 13px;font-size: 13px;line-height: 60px;height: 60px;}
+        .topbar span.intimed{border: 0;}
+        .topbar span a{color: #ffffff;padding: 7px 13px 7px 7px;border-radius: 3px;/* background: #ffffff; *//* border: 1px solid #48a76e; */border: 1px solid rgba(255,255,255,0.7);}
+        .topbar img{margin-right: 9px;margin-top: -3px;}
+        .topbar span.last {border-left: 0;}
+        .topbar span.last:last-child{background: none !important;}
+        .topbar span.txtle {border:0;padding: 0;}
+    </style>
+
+    <script type="text/javascript">
+        function go_popup(index){
+            $('#popup'+index).bPopup();
+        }
+    </script>
+
+    <th:block th:replace="~{layout/fragment/left :: left_script}" />
+    <th:block th:replace="~{layout/fragment/menuTopBar :: menuTopBar_script}" />
+
+    <!-- 특정 페이지만의 css, script 추가 ==> 해당 페이지 내 <head>태그 안에 작성하면 자동으로 layout에 추가되게 바뀜 (21.08.17)-->
+<!--    <th:block layout:fragment="css"/>-->
+<!--    <th:block layout:fragment="script"/>-->
+</head>
+
+</html>

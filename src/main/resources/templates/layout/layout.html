@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="~{layout/fragment/header :: common_header}"></head>
+<body>
+    <div id="wrap" class="clfix">
+        <header id="header" th:insert="~{layout/fragment/left :: left_contents}"></header>
+    </div>
+
+    <section id="cont_wrp" class="clfix">
+        <th:block th:replace="~{layout/fragment/menuTopBar :: menuTopBar_contents}" />
+        <th:block layout:fragment="pageContents" />
+    </section>
+</body>
+</html>
