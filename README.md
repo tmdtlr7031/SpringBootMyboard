@@ -12,3 +12,4 @@
 	- SQL : MyBatis Framework, MariaDB Driver
 	- I/O : Validation
 
+## master / dev 브랜치 나눠서 작업
