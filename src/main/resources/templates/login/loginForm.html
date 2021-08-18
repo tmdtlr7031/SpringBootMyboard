@@ -15,14 +15,23 @@
     <script type="text/javascript" th:src="@{/boardresources/bootstrap_4.4.1/js/bootstrap.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/boardresources/bootstrap_4.4.1/css/bootstrap.css}" media="all">
 
+    <style>
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
+
     <script th:inline="javascript">
         function actionLogin() {
             if ($('#usrId').val() == "") {
                 alert("아이디를 입력하세요.");
                 $('#usrId').focus();
+                return false;
             } else if ($('#usrPwd').val() == "") {
                 alert("비밀번호를 입력하세요.");
                 $('#usrPwd').focus();
+                return false;
             }
             document.loginForm.submit();
         }
@@ -30,20 +39,22 @@
 
 </head>
 <body>
-    <form th:name="loginForm" method="post" th:action="@{/login}" th:object="${users}">
+    <form th:name="loginForm" method="post" th:action="@{/actionLogin}" th:object="${loginDto}">
         <div>
             <div id="loginwrap">
                 <div class="lgninner">
                     <img th:src="@{/boardresources/image/LoginCat.png}" alt="로그인하세요" />
-                    <h1>로그인 폼</h1>
+                    <h1 th:text="#{page.LoginForm}">로그인 폼</h1>
                     <ul>
                         <li>
                             <label for="usrId">아이디</label>
-                            <input type="text" id="usrId" th:field="*{usrId}" title="아이디" tabindex=1 placeholder="아이디">
+                            <input type="text" id="usrId" th:field="*{usrId}" th:errorclass="field-error" title="아이디" tabindex=1 placeholder="아이디">
+                            <p class="field-error" th:errors="*{usrId}"></p>
                         </li>
                         <li>
                             <label for="usrPwd">비밀번호</label>
-                            <input type="password" id="usrPwd" th:field="*{usrPwd}" title="비밀번호" maxlength="16" tabindex="2" onKeyDown="javascript:if (event.keyCode == 13) { actionLogin(); }" placeholder="비밀번호">
+                            <input type="password" id="usrPwd" th:field="*{usrPwd}" th:errorclass="field-error" title="비밀번호" maxlength="16" tabindex="2" placeholder="비밀번호">
+                            <p class="field-error" th:errors="*{usrPwd}"></p>
                         </li>
                         <li class="btn btn-block">
                             <a href="javascript:;" th:onclick="actionLogin()">로그인</a>

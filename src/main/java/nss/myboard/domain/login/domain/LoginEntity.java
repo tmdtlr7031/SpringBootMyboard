@@ -1,10 +1,11 @@
 package nss.myboard.domain.login.domain;
 
+import lombok.Builder;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Setter
+@Builder
 public class LoginEntity {
     /** 시퀀스 */
     private int usrSeq;
@@ -30,4 +31,5 @@ public class LoginEntity {
     private int failCnt;
     /** 업체별 기능 관리 */
     private String companyUseCode;
+
 }
