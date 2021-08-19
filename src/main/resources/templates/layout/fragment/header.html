@@ -2,6 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
+<!--
+    레이아웃 파일의 헤더부분에 쭉 작성해야 각 페이지의 헤더에 작성된 스크립트, css가 자동으로 추가됨.
+    fragment로 레이아웃 페이지에 replace하면 각 페이지의 <head>부분에 작성된 css, script가 추가되지 않음
+-->
 <head th:fragment="common_header">
     <meta charset="UTF-8">
 

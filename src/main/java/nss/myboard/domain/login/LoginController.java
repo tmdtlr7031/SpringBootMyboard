@@ -18,7 +18,7 @@ public class LoginController {
     @GetMapping("/")
     public String skipIndex(Model model) {
         // 로그인 된 사용자인 경우 메인 페이지로 <TODO> 인터셉터로 뺄 것
-        // @SessionAttribute(name = "loginUserId", required = false ) LoginDto loginDto
+        // @SessionAttribute(name = "loginUser", required = false ) LoginDto loginDto
 //        if (loginDto != null) {
 //            return "redirect:/dashboard/selectDashBoardList.do";
 //        }
@@ -47,15 +47,15 @@ public class LoginController {
             return "login/loginForm";
         }
 
-        session.setAttribute("loginUserId", loginDto.getUsrId());
-        return "redirect:/dashboard/selectDashBoardList.do";
+        session.setAttribute("loginUser", loginDto);
+        return "redirect:/dashboard/selectDashBoardList";
     }
 
     /**
      * 로그아웃 처리
      */
     @RequestMapping("/actionLogout")
-    public String actionLogout(HttpSession session, @SessionAttribute(name = "loginUserId", required = false ) LoginDto loginDto) {
+    public String actionLogout(HttpSession session, @SessionAttribute(name = "loginUser", required = false ) LoginDto loginDto) {
         // 중복 호출 시 예외 발생 방지
         if (loginDto != null) {
             session.invalidate();

@@ -18,19 +18,21 @@ import java.util.List;
 public class DashBoardController {
 
     @GetMapping("/selectDashBoardList")
-    public String selectDashBoardList(@ModelAttribute DashBoardDto dashBoardDto, Model model) {
+    public String selectDashBoardList(@ModelAttribute("dashBoardDto") DashBoardDto dashBoardDto, Model model) {
 
         // 페이징
         PaginationInfo paginationInfo = PaginationInfo.builder()
                                                 .currentPageNo(dashBoardDto.getPageIndex())
                                                 .recordCountPerPage(dashBoardDto.getPageUnit())
                                                 .pageSize(dashBoardDto.getPageSize())
+                                                .totalRecordCount(1) // 전체 게시물 개수 조회 쿼리 결과
                                                 .build();
 
         dashBoardDto.setFirstIndex(paginationInfo.getFirstRecordIndex());
         dashBoardDto.setLastIndex(paginationInfo.getLastRecordIndex());
 
         // 조회쿼리
+
 
         // 임시용
         List<DashBoardDto> resultList = new ArrayList<>();
@@ -44,7 +46,8 @@ public class DashBoardController {
         resultList.add(temp);
 
         model.addAttribute("resultList", resultList);
+        model.addAttribute("paginationInfo", paginationInfo);
 
-        return "/dashboard/selectDashBoardList";
+        return "dashboard/selectDashBoardList";
     }
 }
