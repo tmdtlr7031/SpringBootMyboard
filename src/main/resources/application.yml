@@ -5,6 +5,10 @@ spring:
   thymeleaf:
     cache: false # 타임리프 캐시 끔 -> 개발 시 수정사항 바로 반영?
 
+  # 메시지 관리 포인트
+  messages:
+    basename: messages,errors
+
   servlet:
     multipart:
       max-file-size: 100MB

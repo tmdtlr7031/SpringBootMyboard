@@ -3,15 +3,15 @@ package nss.myboard.domain.login.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 public class LoginDto {
 
-    @NotEmpty
+    @NotBlank
     private String usrId;
 
-    @NotEmpty
+    @NotBlank
     private String usrPwd;
 }
