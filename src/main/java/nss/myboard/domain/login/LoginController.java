@@ -14,14 +14,8 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class LoginController {
 
-    /* @SessionAttribute를 이용한 세션 확인 */
     @GetMapping("/")
     public String skipIndex(Model model) {
-        // 로그인 된 사용자인 경우 메인 페이지로 <TODO> 인터셉터로 뺄 것
-        // @SessionAttribute(name = "loginUser", required = false ) LoginDto loginDto
-//        if (loginDto != null) {
-//            return "redirect:/dashboard/selectDashBoardList.do";
-//        }
         return "redirect:/loginForm";
     }
 

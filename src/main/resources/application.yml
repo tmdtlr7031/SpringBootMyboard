@@ -19,3 +19,13 @@ spring:
     url: jdbc:mariadb://localhost:3306/test
     username: root
     password: depth1004!
+
+  # 세션 유효 (초단위)
+  session:
+    timeout: 1800
+
+# web.xml의 encodingFilter 부분 대체
+server:
+  servlet:
+    encoding:
+      charset: utf-8

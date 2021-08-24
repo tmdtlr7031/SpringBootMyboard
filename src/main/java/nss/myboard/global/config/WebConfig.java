@@ -1,5 +1,7 @@
 package nss.myboard.global.config;
 
+import nss.myboard.global.interceptor.CheckLoginInterceptor;
+import nss.myboard.global.interceptor.LogInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -24,5 +26,23 @@ public class WebConfig implements WebMvcConfigurer {
                 .setCacheControl(CacheControl.noStore()) // 캐시 저장 X
         ;
 
+    }
+
+    /**
+     *
+     * 인터셉터 설정
+     *
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LogInterceptor())
+                .addPathPatterns("/**")
+                .order(1)
+                .excludePathPatterns("/boardresources/**","/error");
+
+        registry.addInterceptor(new CheckLoginInterceptor())
+                .addPathPatterns("/**")
+                .order(2)
+                .excludePathPatterns("/boardresources/**","/error", "/loginForm");
     }
 }
