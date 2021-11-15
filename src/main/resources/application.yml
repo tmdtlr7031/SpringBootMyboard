@@ -29,3 +29,8 @@ server:
   servlet:
     encoding:
       charset: utf-8
+
+# MyBatis설정
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/**/*.xml
+  config-location: classpath:/mybatis/mybatis-config.xml
