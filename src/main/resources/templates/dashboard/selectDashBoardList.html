@@ -241,12 +241,17 @@
 
         //     	popup.focus();
         //     }
+
+        function goWriteForm() {
+            // location.href = "/dashboard/boardWriteForm";
+            location.href = "/dashboard/insertTest";
+        }
     </script>
 </head>
 <th:block layout:fragment="pageContents">
     <div class="usrposit"></div>
     <div id="maininner"><!-- maininner (s)-->
-        <form name="listFrm" id="listFrm" th:object="${dashBoardDto}" method="post">
+        <form name="listFrm" id="listFrm" th:object="${dashBoardDto}" method="get" onsubmit="return false;">
             <input type="hidden" th:field="*{pageIndex}">
 
             <div style="float: left;">
@@ -303,6 +308,9 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div style="float: right;">
+                <button th:onclick="goWriteForm()">등록폼</button>
             </div>
         </form>
         <div class="page_num">

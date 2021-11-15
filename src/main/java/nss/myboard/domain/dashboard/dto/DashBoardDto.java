@@ -24,6 +24,6 @@ public class DashBoardDto extends DefaultDto {
     private String updDt;
     private String excelYn = "N";
 
-    private List<DashBoardDto> paramList = new ArrayList<DashBoardDto>();
+    private List<DashBoardDto> paramList = new ArrayList<>();
 
 }

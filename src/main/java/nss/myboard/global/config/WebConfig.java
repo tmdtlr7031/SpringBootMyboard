@@ -21,7 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
     // 해당 방법은 Cache-Control: no-Store, no-Cache, must-Revalidate 이렇게 다 적용이 안된다. --> 각 요청마다는 response를 쓰면 되지만 전역으로 설정하는 건 모르겠다..
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("**/*")
+        registry.addResourceHandler("resources/**")
                 .addResourceLocations("classpath:/static/")
                 .setCacheControl(CacheControl.noStore()) // 캐시 저장 X
         ;
@@ -43,6 +43,6 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new CheckLoginInterceptor())
                 .addPathPatterns("/**")
                 .order(2)
-                .excludePathPatterns("/boardresources/**","/error", "/loginForm");
+                .excludePathPatterns("/boardresources/**","/error", "/loginForm", "/actionLogin");
     }
 }

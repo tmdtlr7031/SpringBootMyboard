@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
  * - setter보다 시의성도 좋고 직관적.
  */
 @Slf4j
-@Getter
 public class PaginationInfo {
 
     /**
@@ -26,11 +25,35 @@ public class PaginationInfo {
     private int pageSize;
     private int totalRecordCount;
 
-    @Builder
-    public PaginationInfo(int currentPageNo, int recordCountPerPage, int pageSize, int totalRecordCount) {
+    public int getCurrentPageNo() {
+        return currentPageNo;
+    }
+
+    public void setCurrentPageNo(int currentPageNo) {
         this.currentPageNo = currentPageNo;
+    }
+
+    public int getRecordCountPerPage() {
+        return recordCountPerPage;
+    }
+
+    public void setRecordCountPerPage(int recordCountPerPage) {
         this.recordCountPerPage = recordCountPerPage;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public int getTotalRecordCount() {
+        return totalRecordCount;
+    }
+
+    public void setTotalRecordCount(int totalRecordCount) {
         this.totalRecordCount = totalRecordCount;
     }
 

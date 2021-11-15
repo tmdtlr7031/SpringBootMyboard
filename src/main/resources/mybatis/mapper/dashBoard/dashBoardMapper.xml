@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Wed Feb 01 15:11:03 KST 2017-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nss.myboard.domain.dashboard.mapper.DashBoardMapper">
+
+    <select id="selectDashBoardList" parameterType="DashBoardDTO" resultType="DashBoardDTO">
+        SELECT
+            *
+        FROM
+            nss_board
+        ORDER BY
+            BOARD_SEQ DESC
+    </select>
+    <select id="selectDashBoardListCnt" parameterType="DashBoardDTO" resultType="int">
+        SELECT count(*)
+        FROM nss_board
+    </select>
+
+    <insert id="insertDashBoardListTest">
+        INSERT INTO nss_board (ORDER_CODE, USER_NAME, ORDER_PRODUCT, ORDER_CNT, ORDER_STATUS, REG_ID, REG_DT)
+        VALUES (9999, '테스트', '테스트', 99, '테스트', '테스트', SYSDATE())
+    </insert>
+</mapper>
