@@ -1,4 +1,4 @@
-package nss.myboard.domain.login.dto;
+package nss.myboard.domain.login.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;

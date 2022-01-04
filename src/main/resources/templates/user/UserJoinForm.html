@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<th:block layout:fragment="pageContents">
+    <div class="usrposit"></div>
+    <div id="maininner">
+        <div>
+            <table class="table table-striped">
+                <colgroup>
+                    <!-- 필요에 따라 조절 / 합이 100이어야 함 -->
+                    <col style="width: 5%;">
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">아이디</th>
+                    <th scope="col">회원명</th>
+                    <th scope="col">등록일시</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr style="cursor: pointer;" th:each="result : ${resultList}" th:unless="${#lists.isEmpty(resultList)}">
+                        <!-- No -->
+                        <td th:text="${resultStat.count}"/></td>
+                        <td th:text="${result.usrId}"></td>
+                        <td th:text="${result.usrName}"></td>
+                        <td th:text="${result.regDt}"></td>
+                    </tr>
+                    <tr style="cursor: pointer;" th:if="${#lists.isEmpty(resultList)}">
+                        <td colspan="4">목록이 없습니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="float: right;">
+            <button th:onclick="goWriteForm()">등록폼</button>
+        </div>
+    </div>
+</th:block>
+
+</html>

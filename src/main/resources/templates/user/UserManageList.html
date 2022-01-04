@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+ <style>
+        #maininner {padding: 20px;/* min-width: 1630px; */position: relative;background: #fff;margin: -46px 20px 20px 252px;border-radius: 4px;box-shadow: 0 0 10px rgba(0,0,0,0.2);box-sizing: border-box;}
+        #cont_wrp .usrposit {position: relative;margin: 0px 0 0 223px;/* border-bottom: 1px solid #d5dce0; */min-width: 1060px;/* background: #25476a; */padding: 31px 0 101px 30px;box-sizing: border-box;}
+        @media all and (max-width:1600px){
+            #wrap,#cont_wrp .usrposit,.topbar{min-width: inherit;}
+        }
+    </style>
+</head>
+
+<th:block layout:fragment="pageContents">
+    <div class="usrposit"></div>
+    <div id="maininner">
+        <div>
+            <table class="table table-striped">
+                <colgroup>
+                    <!-- 필요에 따라 조절 / 합이 100이어야 함 -->
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">아이디</th>
+                    <th scope="col">회원명</th>
+                    <th scope="col">등록일시</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="result : ${resultList}" th:if="${!#lists.isEmpty(resultList)}">
+                        <td th:text="${resultStat.count}"/></td>
+                        <td style="cursor: pointer;" th:text="${result.usrId}"></td>
+                        <td th:text="${result.usrName}"></td>
+                        <td th:text="${result.regDt}"></td>
+                    </tr>
+                    <tr style="cursor: pointer;" th:unless="${!#lists.isEmpty(resultList)}">
+                        <td colspan="4" style="text-align: center;">목록이 없습니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="float: right;">
+            <button th:onclick="">등록폼</button>
+        </div>
+    </div>
+</th:block>
+
+</html>

@@ -18,7 +18,7 @@ import java.util.Collections;
 @Configuration
 public class TransactionConfig {
     private static final String AOP_TRANSACTION_METHOD_NAME="*";
-    private static final String AOP_TRANSACTION_EXPRESSION="execution(* nss.myboard.domain..*Controller.*(..))";
+    private static final String AOP_TRANSACTION_EXPRESSION="execution(* nss.myboard.domain..*Service.*(..))";
 
     @Autowired
     private TransactionManager transactionManager;

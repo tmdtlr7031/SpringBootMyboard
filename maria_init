@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS `nss_board`;
+DROP TABLE IF EXISTS `nss_comboard`;
+DROP TABLE IF EXISTS `nss_comment`;
+DROP TABLE IF EXISTS `nss_file`;
+DROP TABLE IF EXISTS `nss_user`;
+DROP TABLE IF EXISTS `nss_ip`;
+DROP TABLE IF EXISTS `nss_role`;
+
 CREATE TABLE `nss_board` (
   `board_seq` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '게시글 일련번호',
   `order_code` int(10) unsigned DEFAULT NULL COMMENT '주문번호',
@@ -9,6 +17,7 @@ CREATE TABLE `nss_board` (
   `reg_dt` datetime DEFAULT current_timestamp() COMMENT '등록일시',
   PRIMARY KEY (`board_seq`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='대시보드 테이블'
+;
 
 CREATE TABLE `nss_comboard` (
   `com_board_code` char(2) NOT NULL COMMENT '게시판 구분코드',
@@ -21,6 +30,7 @@ CREATE TABLE `nss_comboard` (
   `mod_dt` datetime DEFAULT NULL COMMENT '수정일시',
   PRIMARY KEY (`com_board_code`,`com_board_seq`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='원 게시물 테이블'
+;
 
 CREATE TABLE `nss_comment` (
   `reply_seq` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '댓글일련번호',
@@ -36,6 +46,7 @@ CREATE TABLE `nss_comment` (
   `mod_dt` datetime DEFAULT current_timestamp() COMMENT '수정일시',
   PRIMARY KEY (`reply_seq`,`reply_group`,`org_board_seq`,`reply_group_odr`,`reply_depth`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='원 게시글에 대한 댓글 테이블'
+;
 
 CREATE TABLE `nss_file` (
   `board_code` char(2) NOT NULL COMMENT '게시판구분코드',
@@ -49,6 +60,7 @@ CREATE TABLE `nss_file` (
   `reg_dt` datetime DEFAULT NULL COMMENT '등록일시',
   PRIMARY KEY (`board_code`,`board_seq`,`file_seq`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='첨부파일테이블'
+;
 
 CREATE TABLE `nss_user` (
   `USR_SEQ` int(11) NOT NULL AUTO_INCREMENT COMMENT '일련번호',
@@ -63,6 +75,7 @@ CREATE TABLE `nss_user` (
   PRIMARY KEY (`USR_SEQ`),
   UNIQUE KEY `nss_user_UN` (`USR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='회원테이블'
+;
 
 CREATE TABLE `nss_ip` (
   `USER_SEQ` int(11) NOT NULL COMMENT '회원일련번호',
@@ -71,6 +84,7 @@ CREATE TABLE `nss_ip` (
   `REG_DT` datetime DEFAULT NULL COMMENT '등록일시',
   PRIMARY KEY (`USER_SEQ`,`IP_ADDRESS`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+;
 
 CREATE TABLE `nss_role` (
   `ROLE_SEQ` int(11) NOT NULL AUTO_INCREMENT COMMENT '일련번호',
@@ -84,35 +98,35 @@ CREATE TABLE `nss_role` (
   PRIMARY KEY (`ROLE_SEQ`),
   UNIQUE KEY `nss_role_UN` (`ROLE_CODE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+;
+
+-- ------
 
 
---------
-
-
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(1, 'ROLE_ADMIN', '총관리자권한', '0000', 'admin', NULL, 'admin', NULL);
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(2, 'ROLE_NET', '전산실장 권한', 'ROLE_ADMIN', 'admin', NULL, 'admin', NULL);
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(3, 'ROLE_NET_MNGT1', '전산1팀장 권한', 'ROLE_NET', 'admin', NULL, 'admin', NULL);
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(4, 'ROLE_NET_MNGT2', '전산2팀장 권한', 'ROLE_NET', 'admin', NULL, 'admin', NULL);
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(5, 'ROLE_NET_MNGT3', '전산3팀장 권한', 'ROLE_NET', 'admin', NULL, 'admin', NULL);
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(6, 'ROLE_NET_T1', '전산1팀', 'ROLE_NET_MNGT1', 'admin', NULL, 'admin', NULL);
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(7, 'ROLE_NET_T2', '전산2팀', 'ROLE_NET_MNGT2', 'admin', NULL, 'admin', NULL);
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(8, 'ROLE_NET_T3', '전산3팀', 'ROLE_NET_MNGT3', 'admin', NULL, 'admin', NULL);
-INSERT INTO test.nss_role
+INSERT INTO nss_role
 (ROLE_SEQ, ROLE_CODE, ROLE_NAME, PARENT_CODE, REG_ID, REG_DT, UPD_ID, UPD_DT)
 VALUES(9, 'ROLE_DEV', '개발자용', '0000', 'admin', NULL, 'admin', NULL);

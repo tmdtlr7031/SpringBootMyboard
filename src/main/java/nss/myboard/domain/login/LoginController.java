@@ -1,14 +1,20 @@
 package nss.myboard.domain.login;
 
-import lombok.extern.slf4j.Slf4j;
-import nss.myboard.domain.login.dto.LoginDto;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
-import javax.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
+import nss.myboard.domain.login.domain.dto.LoginDto;
 
 @Controller
 @Slf4j
