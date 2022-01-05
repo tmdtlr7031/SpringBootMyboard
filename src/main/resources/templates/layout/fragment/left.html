@@ -3,9 +3,8 @@
 <head>
     <script type="text/javascript" th:inline="javascript" th:fragment="left_script">
         $(document).ready(function(){
-            $('.gnbtab li').on('click',function(e){
-                $(this).addClass('on');
-//           $(this).siblings().removeClass('on');
+            $('.nav.nav-sidebar li').on('click',function(e){
+                $(this).addClass('active');
             });
         });
 
@@ -18,19 +17,12 @@
     </script>
 </head>
 <body>
-    <div id="wrap" class="clfix" th:fragment="left_contents">
-        <h1>메뉴 선택</h1>
-        <div class="gnbwrp">
-            <nav id="gnb">
-                <ul class="gnbtab">
-                    <li><a th:href="@{/dashboard/selectDashBoardList}">엑셀 업로드, 다운로드 게시</a></li>
-                    <li><a th:href="@{/fileboard/admin/selectFileBoardList}">파일첨부</a></li>
-                    <li><a th:href="@{/fileboard/user/selectFileBoardList}">대댓글</a></li>
-                    <li><a th:href="@{/dynamicList/list/selectDynamicBoardList}">Ajax리스트 조회 테스트</a></li>
-                    <li><a th:href="@{/user/manage}">사용자관리</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <ul class="nav nav-sidebar" th:fragment="left_contents">
+        <li class="active"><a th:href="@{/dashboard/selectDashBoardList}">엑셀 업로드, 다운로드 게시</a></li>
+        <li><a th:href="@{/fileboard/admin/selectFileBoardList}">파일첨부</a></li>
+        <li><a th:href="@{/fileboard/user/selectFileBoardList}">대댓글</a></li>
+        <li><a th:href="@{/dynamicList/list/selectDynamicBoardList}">Ajax리스트 조회 테스트</a></li>
+        <li><a th:href="@{/user/manage}">사용자관리</a></li>
+    </ul>
 </body>
 </html>

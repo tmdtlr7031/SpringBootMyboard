@@ -3,13 +3,15 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-
-    <title>게시판 기능 넣기 프로젝트 v1.0 Boot</title>
-
-    <!-- 공통 -->
-
-    <!-- favicon -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
+    
+    <title>게시판 기능 넣기 프로젝트 v1.0 Boot</title>
 
     <!-- 부트스트랩4 필수 : 제이쿼리, popper.js -->
     <script type="text/javascript" th:src="@{/boardresources/js/jquery-3.5.0.min.js}"></script>
@@ -18,20 +20,11 @@
     <script type="text/javascript" th:src="@{/boardresources/js/jquery.countdown.js}"></script>
 
     <!-- 부트스트랩 -->
-    <script type="text/javascript" th:src="@{/boardresources/bootstrap_4.4.1/js/bootstrap.js}"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/boardresources/bootstrap_4.4.1/css/bootstrap.css}" media="all">
+    <script type="text/javascript" th:src="@{/boardresources/bootstrap-3.3.2/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/boardresources/bootstrap-3.3.2/css/bootstrap.min.css}" media="all">
+    <link rel="stylesheet" type="text/css" th:href="@{/boardresources/bootstrap-3.3.2/css/bootstrap-theme.min.css}" media="all">
+    <link rel="stylesheet" type="text/css" th:href="@{/boardresources/bootstrap-3.3.2/css/sampleTemplate.css}" media="all">
 
-    <style>
-        #header {position: absolute;z-index: 1;float: left;width: 230px;min-height: 100%;overflow-x:hidden;background-color: #fff;/* border-right: 1px solid #262626; */box-shadow: 0 0 5px rgba(0,0,0,0.2);}
-        .topbar {background-color: #8C8C8C;text-align: right;padding: 0px 25px 0 241px;height: 60px;line-height: 35px;font-size: 0;min-width: 1060px;/* border-bottom: 1px solid #1b3958; */}
-        .topbar span{cursor: pointer;color: #fff;font-weight: normal;display:inline-block;zoom:1;*display:inline;_display:inline;padding: 0 0 0 13px;font-size: 13px;line-height: 60px;height: 60px;}
-        .topbar span.intimed{border: 0;}
-        .topbar span a{color: #ffffff;padding: 7px 13px 7px 7px;border-radius: 3px;/* background: #ffffff; *//* border: 1px solid #48a76e; */border: 1px solid rgba(255,255,255,0.7);}
-        .topbar img{margin-right: 9px;margin-top: -3px;}
-        .topbar span.last {border-left: 0;}
-        .topbar span.last:last-child{background: none !important;}
-        .topbar span.txtle {border:0;padding: 0;}
-    </style>
 
     <script type="text/javascript">
         function go_popup(index){
@@ -43,13 +36,14 @@
     <th:block th:replace="~{layout/fragment/menuTopBar :: menuTopBar_script}" />
 </head>
 <body>
-    <div id="wrap" class="clfix">
-        <header id="header" th:insert="~{layout/fragment/left :: left_contents}"></header>
+	<th:block th:replace="~{layout/fragment/menuTopBar :: menuTopBar_contents}" />	
+    <div class="container-fluid">
+      <div class="row">
+      	<div class="col-sm-3 col-md-2 sidebar" th:insert="~{layout/fragment/left :: left_contents}"></div>
+      	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      		<th:block layout:fragment="pageContents" />
+      	</div>
+      </div>
     </div>
-
-    <section id="cont_wrp" class="clfix">
-        <th:block th:replace="~{layout/fragment/menuTopBar :: menuTopBar_contents}" />
-        <th:block layout:fragment="pageContents" />
-    </section>
 </body>
 </html>

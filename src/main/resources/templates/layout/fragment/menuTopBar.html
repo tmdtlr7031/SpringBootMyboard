@@ -50,13 +50,28 @@
         }
     </script>
 
-    <div class="topbar" th:fragment="menuTopBar_contents">
-        <span class="txtle flLeft"><a th:href="@{/myPage.do}">관리자님 환영합니다.</a></span>
-        <span class="intimed flLeft">마지막 접속시간&nbsp;  2020-04-23 10:03:03&nbsp;<em id="logTimer"></em></span>
-        <span class="exten flLeft"><a href="javascript:;" th:onclick="loginExtension()">로그인연장</a></span>
-        <span class="last"><a href="javascript:;" th:onclick="logout()">로그아웃</a></span>
-        <!-- 190419 (s) -->
-        <span class="last" style="background-color: #252525;"><a>임시용</a></span>
-        <!-- //190419 (e) -->
-    </div>
+	<nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="menuTopBar_contents">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
 </html>
