@@ -3,6 +3,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<head>
+	<script type="text/javascript" th:inline="javascript">
+		function goJoinForm() {
+			location.href = /*[[@{/user/joinform}]]*/ ""; 
+		}
+	</script>
+</head>
+
 <th:block layout:fragment="pageContents">
     <div class="usrposit"></div>
     <div id="maininner">
@@ -37,7 +45,7 @@
             </table>
         </div>
         <div style="float: right;">
-            <button th:onclick="">등록폼</button>
+            <button th:onclick="goJoinForm();">등록폼</button>
         </div>
     </div>
 </th:block>

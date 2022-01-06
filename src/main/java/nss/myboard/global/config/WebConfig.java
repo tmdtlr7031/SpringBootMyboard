@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
-@Configuration
+//@Configuration
 public class WebConfig implements WebMvcConfigurer {
     /**
      * Cache-Control 설정 방법들 (https://www.baeldung.com/spring-mvc-cache-headers)

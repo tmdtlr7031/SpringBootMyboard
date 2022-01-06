@@ -9,9 +9,12 @@
     
     <typeAliases>
         <typeAlias type="nss.myboard.domain.login.domain.dto.LoginDto" alias="LoginDTO"/>
-        <typeAlias type="nss.myboard.domain.login.domain.entity.LoginEntity" alias="LoginEntity"/>
         <typeAlias type="nss.myboard.domain.dashboard.dto.DashBoardDto" alias="DashBoardDTO"/>
         <typeAlias type="nss.myboard.domain.user.domain.dto.UserManageDTO" alias="UserManageDTO"/>
+        
+        <typeAlias type="nss.myboard.domain.login.domain.entity.LoginEntity" alias="LoginEntity"/>
+        <typeAlias type="nss.myboard.domain.user.domain.entity.RoleEntity" alias="RoleEntity"/>
+        
     </typeAliases>
 
 </configuration>

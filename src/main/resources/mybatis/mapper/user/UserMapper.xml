@@ -4,6 +4,17 @@
 <mapper namespace="nss.myboard.domain.user.mapper.UserManageMapper">
 
     <select id="existsUsers" parameterType="UserManageDTO" resultType="LoginEntity">
-    	SELECT * FROM NSS_USER
+    	SELECT * FROM nss_user
     </select>
+    
+    <select id="getRolesInfo" resultType="RoleEntity">
+    	SELECT * FROM nss_role
+    </select>
+    
+    <insert id="joinUser" parameterType="UserManageDTO">
+    	INSERT INTO nss_user
+    		(USR_ID, USR_NAME, USR_PWD, ROLE_SEQ, REG_DT)
+    	VALUES
+    		(#{usrId}, #{usrName}, #{usrPwd}, #{roleSeq}, NOW())
+    </insert>
 </mapper>

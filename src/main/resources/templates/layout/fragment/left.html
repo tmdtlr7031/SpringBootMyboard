@@ -5,13 +5,14 @@
         $(document).ready(function(){
             $('.nav.nav-sidebar li').on('click',function(e){
                 $(this).addClass('active');
+                $(this).siblings().removeClass('active');
             });
         });
 
         function go_url(url, menuOrder, prtMenuSeq){
             document.menuForm.menuOrderChk.value = menuOrder;
             document.menuForm.prtMenuSeqChk.value = prtMenuSeq;
-            document.menuForm.action = /* [[@{url}]] */ url;
+            document.menuForm.action = /*[[@{url}]]*/ url;
             document.menuForm.submit();
         }
     </script>

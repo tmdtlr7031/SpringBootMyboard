@@ -68,7 +68,7 @@ CREATE TABLE `nss_user` (
   `USR_NAME` varchar(10) DEFAULT NULL COMMENT '이름',
   `USR_PWD` varchar(100) DEFAULT NULL COMMENT '비밀번호',
   `ROLE_SEQ` int(11) DEFAULT NULL COMMENT '권한일련번호',
-  `FAIL_CNT` smallint(6) DEFAULT NULL COMMENT '로그인실패횟수',
+  `FAIL_CNT` smallint(6) DEFAULT 0 COMMENT '로그인실패횟수',
   `REG_DT` datetime DEFAULT NULL COMMENT '등록일시',
   `LOG_DT` datetime DEFAULT NULL COMMENT '로그인일시',
   `UPD_DT` datetime DEFAULT NULL COMMENT '수정일시',

@@ -3,42 +3,82 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<head>
+	<style>
+		.field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+	</style>
+	
+	<script type="text/javascript" th:inline="javascript">
+		const emailRegex = '/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i';
+		
+		function saveUser() {
+			document.joinFrm.submit();
+		}
+	</script>
+</head>
+
 <th:block layout:fragment="pageContents">
     <div class="usrposit"></div>
     <div id="maininner">
         <div>
-            <table class="table table-striped">
-                <colgroup>
-                    <!-- 필요에 따라 조절 / 합이 100이어야 함 -->
-                    <col style="width: 5%;">
-                    <col style="width: auto;">
-                    <col style="width: auto;">
-                    <col style="width: auto;">
-                </colgroup>
-                <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">아이디</th>
-                    <th scope="col">회원명</th>
-                    <th scope="col">등록일시</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr style="cursor: pointer;" th:each="result : ${resultList}" th:unless="${#lists.isEmpty(resultList)}">
-                        <!-- No -->
-                        <td th:text="${resultStat.count}"/></td>
-                        <td th:text="${result.usrId}"></td>
-                        <td th:text="${result.usrName}"></td>
-                        <td th:text="${result.regDt}"></td>
-                    </tr>
-                    <tr style="cursor: pointer;" th:if="${#lists.isEmpty(resultList)}">
-                        <td colspan="4">목록이 없습니다.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div style="float: right;">
-            <button th:onclick="goWriteForm()">등록폼</button>
+        	<form th:name="joinFrm" th:action="@{/user/save}" th:object="${userManageDTO}" method="post" onsubmit="return false;">
+	            <table class="table table-striped">
+	                <colgroup>
+	                    <!-- 필요에 따라 조절 / 합이 100이어야 함 -->
+	                    <col style="width: 5%;">
+	                    <col style="width: auto;">
+	                    <col style="width: auto;">
+	                    <col style="width: auto;">
+	                </colgroup>
+	                <tbody>
+	                	<tr>
+	                		<th class="col">아이디</th>
+	                		<td class="col">
+	                			<input type="text" class="form-control" th:field="*{usrId}" th:errorclass="field-error" placeholder="이메일 형식으로 입력해주세요.">
+	                			<button class="btn btn-primary mb-3" th:onclick="javascript:alert('미구현');" >중복확인</button>
+	                			<p class="field-error" th:errors="*{usrId}"></p>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<th class="col">이름</th>
+	                		<td class="col">
+	                			<input type="text" class="form-control" th:field="*{usrName}" th:errorclass="field-error" maxlength="10">
+	                			<p class="field-error" th:errors="*{usrName}"></p>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<th class="col">비밀번호</th>
+	                		<td class="col">
+	                			<input type="password" class="form-control" th:errorclass="field-error" th:field="*{usrPwd}">
+	                			<p class="field-error" th:errors="*{usrPwd}"></p>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<th class="col">비밀번호확인</th>
+	                		<td class="col">
+	                			<input type="password" class="form-control" th:errorclass="field-error" th:field="*{usrPwdChk}">
+	                			<p class="field-error" th:errors="*{usrPwdChk}"></p>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<th class="col">접근 권한</th>
+	                		<td class="col">
+	                			<select class="form-select" th:field="*{roleSeq}" th:errorclass="field-error">
+									<option th:each="role : ${roleList}" th:value="${role.roleSeq}" th:text="${role.roleName}">One</option>
+								</select>
+								<p class="field-error" th:errors="*{roleSeq}"></p>
+	                		</td>
+	                	</tr>
+	                </tbody>
+	            </table>
+	            <h2>
+		            <a th:href="@{/user/manage}"><span class="label label-warning">취소</span></a>
+		            <button th:onclick="saveUser();" class="btn btn-success">등록</button>
+	            </h2>
+            </form>
         </div>
     </div>
 </th:block>
