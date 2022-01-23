@@ -28,7 +28,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
-    implementation group: 'com.navercorp.lucy', name: 'lucy-xss-servlet', version: '2.0.0' // xss 방지 필터
+    implementation group: 'com.navercorp.lucy', name: 'lucy-xss-servlet', version: '2.0.1' // xss 방지 필터
+    implementation 'org.apache.commons:commons-text:1.9'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     annotationProcessor 'org.projectlombok:lombok'
